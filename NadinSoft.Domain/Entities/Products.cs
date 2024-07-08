@@ -18,9 +18,13 @@ namespace NadinSoft.Domain.Entities
         [MaxLength(200)]
         public string Name { get; set; }
         public DateTime ProductDate { get; set; }
+        [MaxLength(20)]
         public string? ManufacturePhone { get; set; }
-        public MailAddress ManufactureEmail { get; set; }
+        [Required]
+        public string ManufactureEmail { get; set; }
         public bool IsAvailable { get; set; }
+
+        //Relations
         [ForeignKey(nameof(UserId))]
         public Users? User { get; set; }
         public int? UserId { get; set; }
