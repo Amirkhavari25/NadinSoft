@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using NadinSoft.Data.Context;
+using NadinSoft.IOC.Dependencies;
 using System;
 
 namespace NadinSoft
@@ -17,6 +18,8 @@ namespace NadinSoft
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            //IOC Layer Dependency Service
+            builder.Services.ServicesDependencies();
 
             //DBContext Dependency
             builder.Services.AddDbContext<NadinSoftContext>(options =>
@@ -34,12 +37,20 @@ namespace NadinSoft
                 app.UseSwaggerUI();
             }
 
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
+            app.Services.CreateScope().ServiceProvider.GetRequiredService<NadinSoftContext>();
 
             app.MapControllers();
+            //Automatic creating DataBase
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<NadinSoftContext>();
+                dbContext.Database.EnsureCreated();
+            }
 
             app.Run();
         }
