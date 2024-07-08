@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F134F23A-313C-42EC-8E50-0DBBCB881A52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoft.Application", "NadinSoft.Application\NadinSoft.Application.csproj", "{94D140D8-BD58-427A-951A-5D2BD4738009}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoft.Application", "NadinSoft.Application\NadinSoft.Application.csproj", "{94D140D8-BD58-427A-951A-5D2BD4738009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoft.Data", "NadinSoft.Data\NadinSoft.Data.csproj", "{DA6D9E0C-207C-4C0F-9D2D-277E0010C761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoft.Data", "NadinSoft.Data\NadinSoft.Data.csproj", "{DA6D9E0C-207C-4C0F-9D2D-277E0010C761}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoft.Domain", "NadinSoft.Domain\NadinSoft.Domain.csproj", "{CD88FBB3-E2F1-47F1-937D-082DC165370D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoft.Domain", "NadinSoft.Domain\NadinSoft.Domain.csproj", "{CD88FBB3-E2F1-47F1-937D-082DC165370D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoft.IOC", "NadinSoft.IOC\NadinSoft.IOC.csproj", "{E7BA4075-18D2-4B11-84C0-1F7168A1AFC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadinSoft.IOC", "NadinSoft.IOC\NadinSoft.IOC.csproj", "{E7BA4075-18D2-4B11-84C0-1F7168A1AFC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoft.Presentation", "NadinSoft.Presentation\NadinSoft.Presentation.csproj", "{DEF91796-8824-4AC3-81F0-1B5926C5E123}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadinSoft", "NadinSoft.Presentation\NadinSoft\NadinSoft.csproj", "{659AC68C-2F56-44EE-BB5A-57B4C44E5598}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,10 @@ Global
 		{E7BA4075-18D2-4B11-84C0-1F7168A1AFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7BA4075-18D2-4B11-84C0-1F7168A1AFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7BA4075-18D2-4B11-84C0-1F7168A1AFC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DEF91796-8824-4AC3-81F0-1B5926C5E123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEF91796-8824-4AC3-81F0-1B5926C5E123}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEF91796-8824-4AC3-81F0-1B5926C5E123}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEF91796-8824-4AC3-81F0-1B5926C5E123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{659AC68C-2F56-44EE-BB5A-57B4C44E5598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{659AC68C-2F56-44EE-BB5A-57B4C44E5598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{659AC68C-2F56-44EE-BB5A-57B4C44E5598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{659AC68C-2F56-44EE-BB5A-57B4C44E5598}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,7 +58,7 @@ Global
 		{DA6D9E0C-207C-4C0F-9D2D-277E0010C761} = {AA6D4A98-C603-472C-AE93-F27033C77831}
 		{CD88FBB3-E2F1-47F1-937D-082DC165370D} = {F0B2A474-27E6-4A40-871E-C43BAEA9717D}
 		{E7BA4075-18D2-4B11-84C0-1F7168A1AFC3} = {8244379E-FC42-478E-A5CE-72CA67B864BA}
-		{DEF91796-8824-4AC3-81F0-1B5926C5E123} = {AE0F8703-E42E-4E33-B4C0-A27B3880B5EB}
+		{659AC68C-2F56-44EE-BB5A-57B4C44E5598} = {AE0F8703-E42E-4E33-B4C0-A27B3880B5EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C20E2F1F-F4B7-486D-B2CB-8CAEB631F9DA}
