@@ -14,5 +14,6 @@ namespace NadinSoft.Domain.Interface
         Task Update(T entity);
         Task Delete(T entity);
         Task SaveChangesAsync();
+        void Dispose();
     }
 }

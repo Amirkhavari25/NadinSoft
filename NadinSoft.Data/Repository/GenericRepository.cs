@@ -29,7 +29,6 @@ namespace NadinSoft.Data.Repository
         {
             _dbset.Remove(entity);
         }
-
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbset.ToListAsync();
@@ -48,6 +47,10 @@ namespace NadinSoft.Data.Repository
         public async Task Update(T entity)
         {
              _dbset.Update(entity);
+        }
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 

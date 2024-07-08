@@ -1,0 +1,18 @@
+﻿using NadinSoft.Data.Context;
+using NadinSoft.Domain.Entities;
+using NadinSoft.Domain.Interface;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NadinSoft.Data.Repository
+{
+    public class ProductRepository : GenericRepository<Products>, IProductRepository
+    {
+        public ProductRepository(NadinSoftContext context) : base(context)
+        {
+        }
+    }
+}

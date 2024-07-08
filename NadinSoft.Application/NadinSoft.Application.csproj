@@ -12,8 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Security\" />
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Services\Implements\" />
   </ItemGroup>
 
   <ItemGroup>

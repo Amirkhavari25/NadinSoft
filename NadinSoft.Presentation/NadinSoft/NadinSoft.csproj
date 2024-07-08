@@ -18,8 +18,4 @@
     <ProjectReference Include="..\..\NadinSoft.IOC\NadinSoft.IOC.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
