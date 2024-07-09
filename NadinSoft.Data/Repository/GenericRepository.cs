@@ -18,13 +18,10 @@ namespace NadinSoft.Data.Repository
             _context = context;
             this._dbset = context.Set<T>();
         }
-
-
         public async Task AddAsync(T entity)
         {
-           await _dbset.AddAsync(entity);
+            await _dbset.AddAsync(entity);
         }
-
         public async Task Delete(T entity)
         {
             _dbset.Remove(entity);
@@ -39,14 +36,14 @@ namespace NadinSoft.Data.Repository
             return await _dbset.FindAsync(id);
         }
 
-        public async Task SaveChangesAsync()
+        public async Task<bool> SaveChangesAsync()
         {
-            await _context.SaveChangesAsync();
+            return (await _context.SaveChangesAsync() > 0);
         }
 
         public async Task Update(T entity)
         {
-             _dbset.Update(entity);
+            _dbset.Update(entity);
         }
         public void Dispose()
         {

@@ -9,6 +9,9 @@ namespace NadinSoft.Application.Services.Interfaces
 {
     public interface IProductService
     {
-       Task<List<ProductModel>> GetAllProducts();
+        Task<List<ProductModel>> GetAllProducts();
+        Task AddProduct(ProductModel product);
+        Task<ProductModel> GetProductForEdit(int id);
+        Task<bool> UpdateProduct(int productId,ProductModel product);
     }
 }

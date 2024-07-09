@@ -13,7 +13,7 @@ namespace NadinSoft.Domain.Interface
         Task AddAsync(T entity);
         Task Update(T entity);
         Task Delete(T entity);
-        Task SaveChangesAsync();
+        Task<bool> SaveChangesAsync();
         void Dispose();
     }
 }
