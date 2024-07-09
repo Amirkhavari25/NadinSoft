@@ -46,7 +46,7 @@ namespace NadinSoft.Controllers
         [HttpGet("{productId}")]
         public async Task<ActionResult<ProductModel>> GetProductForEdit(int productId)
         {
-            var product = await _productService.GetProductForEdit(productId);
+            var product = await _productService.GetProductById(productId);
             if (product == null)
             {
                 return NotFound();
@@ -71,6 +71,21 @@ namespace NadinSoft.Controllers
             else
             {
                 return NotFound("محصولی برای ویرایش یافت نشد");
+            }
+        }
+        [HttpDelete("{productId}")]
+        public async Task<ActionResult> RemoveProduct(int productId)
+        {
+            //It's better to use soft delete by making "IsDelete" property True but for now we're gonna delete the record from database
+            var res = await _productService.RemoveProduct(productId);
+            if (res == true)
+            {
+                return NoContent();
+
+            }
+            else
+            {
+                return NotFound("محصولی برای حذف یافت نشد");
             }
         }
 

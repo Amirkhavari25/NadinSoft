@@ -18,11 +18,5 @@ namespace NadinSoft.Data.Repository
             _context = context;
         }
 
-        public async Task<Products?> GetProductForEdit(int id)
-        {
-           return await _context.Products.FirstOrDefaultAsync(d=>d.Id == id);
-        }
-
-
     }
 }

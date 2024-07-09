@@ -57,9 +57,9 @@ namespace NadinSoft.Application.Services.Implements
             return new List<ProductModel>();
         }
 
-        public async Task<ProductModel> GetProductForEdit(int id)
+        public async Task<ProductModel> GetProductById(int id)
         {
-            var product = await _productRepository.GetProductForEdit(id);
+            var product = await _genericRepository.GetByIdAsync(id);
             if (product != null)
             {
                 return new ProductModel
@@ -94,5 +94,17 @@ namespace NadinSoft.Application.Services.Implements
             }
             return false;
         }
+        public async Task<bool> RemoveProduct(int productId)
+        {
+            var deleteModel = await _genericRepository.GetByIdAsync(productId);
+            if (deleteModel != null)
+            {
+                await _genericRepository.Delete(deleteModel);
+                await _genericRepository.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
     }
 }

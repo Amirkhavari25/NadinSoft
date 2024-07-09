@@ -9,6 +9,6 @@ namespace NadinSoft.Domain.Interface
 {
     public interface IProductRepository 
     {
-        Task<Products?> GetProductForEdit(int id);
+        
     }
 }

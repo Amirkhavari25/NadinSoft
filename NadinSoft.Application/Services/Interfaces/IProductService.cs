@@ -11,7 +11,8 @@ namespace NadinSoft.Application.Services.Interfaces
     {
         Task<List<ProductModel>> GetAllProducts();
         Task AddProduct(ProductModel product);
-        Task<ProductModel> GetProductForEdit(int id);
+        Task<ProductModel> GetProductById(int id);
         Task<bool> UpdateProduct(int productId,ProductModel product);
+        Task<bool> RemoveProduct(int productId);
     }
 }
