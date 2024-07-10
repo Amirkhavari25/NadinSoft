@@ -16,7 +16,13 @@ namespace NadinSoft.Domain.Entities
         [Required]
         [MaxLength(250)]
         public string Name { get; set; }
-
+        public string? FullName { get; set; }
         public ICollection<Products> Products{ get; set; } = new List<Products>();
+
+        public Users(int userId,string name)
+        {
+            UserId = userId;
+            Name = name;
+        }
     }
 }

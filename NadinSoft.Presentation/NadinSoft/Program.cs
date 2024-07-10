@@ -1,8 +1,10 @@
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NadinSoft.Data.Context;
 using NadinSoft.IOC.Dependencies;
 using System;
+using System.Text;
 
 namespace NadinSoft
 {
@@ -27,6 +29,19 @@ namespace NadinSoft
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddAuthentication("Bearer").AddJwtBearer(option =>
+            {
+                option.TokenValidationParameters = new()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["Authentication:Issuer"],
+                    ValidAudience = builder.Configuration["Authentication:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Authentication:SecretForKey"]))
+                };
+            });
+
 
             var app = builder.Build();
 
@@ -39,7 +54,7 @@ namespace NadinSoft
 
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.Services.CreateScope().ServiceProvider.GetRequiredService<NadinSoftContext>();

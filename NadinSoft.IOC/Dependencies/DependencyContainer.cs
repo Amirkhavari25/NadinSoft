@@ -19,6 +19,8 @@ namespace NadinSoft.IOC.Dependencies
             service.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             service.AddScoped<IProductRepository, ProductRepository>();
             service.AddScoped<IProductService, ProductServieces>();
+            service.AddScoped<IUserService, UserServices>();
+            service.AddScoped<IUserRepository, UserRepository>();
             return service;
         }
     }

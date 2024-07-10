@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NadinSoft.Application.Services.Interfaces;
 using NadinSoft.Domain.Models;
@@ -6,8 +7,8 @@ using System.Text.Json.Serialization;
 
 namespace NadinSoft.Controllers
 {
-    [Route("api/[controller]/[action]")]
     [ApiController]
+    [Route("api/[controller]/[action]")]
     public class ProductController : ControllerBase
     {
 
@@ -30,6 +31,7 @@ namespace NadinSoft.Controllers
             return Ok(res);
         }
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> AddProduct(ProductModel model)
         {
             if (!ModelState.IsValid)
@@ -44,6 +46,7 @@ namespace NadinSoft.Controllers
         }
 
         [HttpGet("{productId}")]
+        [Authorize]
         public async Task<ActionResult<ProductModel>> GetProductForEdit(int productId)
         {
             var product = await _productService.GetProductById(productId);
@@ -56,6 +59,7 @@ namespace NadinSoft.Controllers
 
 
         [HttpPut("{productId}")]
+        [Authorize]
         public async Task<ActionResult> UpdateProduct(int productId, ProductModel model)
         {
             if (!ModelState.IsValid)
@@ -74,9 +78,11 @@ namespace NadinSoft.Controllers
             }
         }
         [HttpDelete("{productId}")]
+        [Authorize]
         public async Task<ActionResult> RemoveProduct(int productId)
         {
             //It's better to use soft delete by making "IsDelete" property True but for now we're gonna delete the record from database
+            //For soft delete its better to create a base entity which has IsDelete property and each entity must impliment the base entity
             var res = await _productService.RemoveProduct(productId);
             if (res == true)
             {
