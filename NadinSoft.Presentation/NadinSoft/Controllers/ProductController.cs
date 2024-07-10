@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NadinSoft.Application.Services.Interfaces;
+using NadinSoft.Domain.Entities;
 using NadinSoft.Domain.Models;
+using System.Security.Claims;
 using System.Text.Json.Serialization;
 
 namespace NadinSoft.Controllers
@@ -13,7 +16,7 @@ namespace NadinSoft.Controllers
     {
 
         private IProductService _productService;
-
+        private readonly UserManager<Users> _userManager;
         public ProductController(IProductService productService)
         {
             _productService = productService;
@@ -50,6 +53,11 @@ namespace NadinSoft.Controllers
         public async Task<ActionResult<ProductModel>> GetProductForEdit(int productId)
         {
             var product = await _productService.GetProductById(productId);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if(userId != Convert.ToString(product.UserId))
+            {
+                return Unauthorized();
+            }
             if (product == null)
             {
                 return NotFound();
@@ -62,6 +70,12 @@ namespace NadinSoft.Controllers
         [Authorize]
         public async Task<ActionResult> UpdateProduct(int productId, ProductModel model)
         {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var productmodel = await _productService.GetProductById(productId);
+            if (userId != Convert.ToString(productmodel.UserId))
+            {
+                return Unauthorized();
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -81,6 +95,12 @@ namespace NadinSoft.Controllers
         [Authorize]
         public async Task<ActionResult> RemoveProduct(int productId)
         {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var productmodel = await _productService.GetProductById(productId);
+            if (userId != Convert.ToString(productmodel.UserId))
+            {
+                return Unauthorized();
+            }
             //It's better to use soft delete by making "IsDelete" property True but for now we're gonna delete the record from database
             //For soft delete its better to create a base entity which has IsDelete property and each entity must impliment the base entity
             var res = await _productService.RemoveProduct(productId);
